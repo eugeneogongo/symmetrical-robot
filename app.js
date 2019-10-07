@@ -8,7 +8,7 @@ var io = require('socket.io').listen(server);
 var bodyParser =  require("body-parser");
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
-app.use(cors({credentials: true,origin: 'http://localhost:3000'}));
+app.use(cors({credentials: true,origin: 'https://mytweetstream.herokuapp.com/'}));
 io.origins('*:*');
 var Twitter = require('node-tweet-stream')
     , tw = new Twitter({
