@@ -31,7 +31,7 @@ tw.on('tweet', function (tweet) {
     }
 
 });
-server.listen(3001);
+server.listen(80);
 
 app.post("/track",function (req,res) {
     tw.untrackAll();
