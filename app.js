@@ -10,6 +10,11 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 app.use(cors({credentials: true,origin: 'https://mytweetstream.herokuapp.com/'}));
 io.origins('*:*');
+app.use((req, res, next) => {
+    res.header('Access-Control-Allow-Origin', '*');
+    next();
+});
+
 var Twitter = require('node-tweet-stream')
     , tw = new Twitter({
     consumer_key: process.env.consumer_key,
