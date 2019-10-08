@@ -54,7 +54,7 @@ tw.on('tweet', function (tweet) {
     }
 
 });
-server.listen(process.env.PORT ||3000);
+server.listen(3000);
 
 app.post("/track",function (req,res) {
     tw.untrackAll();
