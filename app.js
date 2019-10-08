@@ -30,7 +30,7 @@ app.use((req, res, next) => {
 });
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
-//app.use(cors({credentials: true,origins: '*'}));
+app.use(cors({credentials: true,origins: '*'}));
 var Twitter = require('node-tweet-stream')
     , tw = new Twitter({
     consumer_key: process.env.consumer_key,
