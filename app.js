@@ -1,4 +1,4 @@
-require('dotenv').config();
+
 var app = require('express')();
 var http = require('http');
 var cors = require('cors');
