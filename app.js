@@ -3,7 +3,12 @@ var app = require('express')();
 var http = require('http');
 var cors = require('cors');
 var server = http.createServer(app);
-var io = require('socket.io').listen(server);
+var io = require('socket.io').listen(server,{
+    log: false,
+    agent: false,
+    origins: '*:*',
+    transports: ['websocket', 'htmlfile', 'xhr-polling', 'jsonp-polling', 'polling']
+});
 
 var bodyParser =  require("body-parser");
 app.use((req, res, next) => {
