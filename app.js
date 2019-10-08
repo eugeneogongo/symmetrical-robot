@@ -9,7 +9,7 @@ var io = require('socket.io').listen(server,{
     origins: '*:*',
     transports: ['websocket', 'htmlfile', 'xhr-polling', 'jsonp-polling', 'polling']
 });
-app.use(cors({origin: '*'}));
+app.use(cors());
 var bodyParser =  require("body-parser");
 app.use((req, res, next) => {
     // Website you wish to allow to connect
