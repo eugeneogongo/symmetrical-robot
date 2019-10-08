@@ -9,21 +9,7 @@ var io = require('socket.io').listen(server,{
     origins: '*:*',
     transports: ['websocket', 'htmlfile', 'xhr-polling', 'jsonp-polling', 'polling']
 });
-var allowedOrigins = ['https://mytweetstream.herokuapp.com',
-    'https://mytweetstream.herokuapp.com/track'];
-app.use(cors({
-    origin: function(origin, callback){
-        // allow requests with no origin
-        // (like mobile apps or curl requests)
-        if(!origin) return callback(null, true);
-        if(allowedOrigins.indexOf(origin) === -1){
-            var msg = 'The CORS policy for this site does not ' +
-                'allow access from the specified Origin.';
-            return callback(new Error(msg), false);
-        }
-        return callback(null, true);
-    }
-}));
+
 var bodyParser =  require("body-parser");
 app.use((req, res, next) => {
     // Website you wish to allow to connect
@@ -33,7 +19,7 @@ app.use((req, res, next) => {
     res.header('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, PUT, PATCH, DELETE');
 
     // Request headers you wish to allow
-
+    res.header('Access-Control-Allow-Headers', 'X-Requested-With,content-type');
     res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
     // Set to true if you need the website to include cookies in the requests sent
     // to the API (e.g. in case you use sessions)
@@ -44,7 +30,7 @@ app.use((req, res, next) => {
 });
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
-
+app.use(cors({credentials: true,origin: 'https://mytweetstream.herokuapp.com'}));
 var Twitter = require('node-tweet-stream')
     , tw = new Twitter({
     consumer_key: process.env.consumer_key,
