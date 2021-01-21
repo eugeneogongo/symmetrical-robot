@@ -13,7 +13,7 @@
     "morgan": "~1.9.1",
     "node-tweet-stream": "^2.0.3",
     "nodemon": "^1.19.3",
-    "socket.io": "^2.3.0",
+    "socket.io": "^2.4.0",
     "dotenv": "latest",
     "cors": "^2.8.5"
   },
